@@ -4,7 +4,7 @@
 
 <template>
     <div>
-HELP
+FIG HELP
     </div>
 </template>
 
