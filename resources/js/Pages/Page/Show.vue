@@ -15,7 +15,7 @@ defineProps({
                 class="overflow-hidden bg-white p-6 text-gray-900 shadow-sm sm:rounded-lg dark:bg-gray-800 dark:text-gray-100"
             >
                 <h1 class="text-2xl font-semibold">{{ page.title }}</h1>
-                <h2>MASTER</h2>
+                <h2>FIG</h2>
                 <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
                     Page slug: <code>{{ page.slug }}</code>
                 </p>
