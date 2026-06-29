@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\PageController;
+// use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -9,23 +9,51 @@ Route::get('/', function () {
     return Inertia::render('Home/Index');
 })->name('home');
 
-Route::get('/help', function () {
-    return Inertia::render('Help');
-})->name('help');
-
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
+//  INTERNAL ROUTES
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::name('internal.')->prefix('internal')->middleware(['auth', 'verified'])->group(function () {
+    Route::get('dashboard', function () {
+        return Inertia::render('Internal/Dashboard');
+    })->name('dashboard');
+    // Route::resource('media', \App\Http\Controllers\Internal\MediaController::class)->only(['index', 'store', 'update', 'destroy']);
+    // Route::resource('menu-items', \App\Http\Controllers\Internal\MenuItemController::class);
+    // Route::resource('competitions', \App\Http\Controllers\Internal\CompetitionController::class);
+    // Route::prefix('competitions/{competition}')->name('competitions.')->group(function () {
+    //     Route::delete('submissions/{submission}', [\App\Http\Controllers\Internal\CompetitionSubmissionController::class, 'destroy'])->name('submissions.destroy');
+    //     Route::post('submissions/{submission}/winner', [\App\Http\Controllers\Internal\CompetitionSubmissionController::class, 'winner'])->name('submissions.winner');
+    // });
+    // Route::resource('pages', \App\Http\Controllers\Internal\PageController::class);
+    // Route::resource('posts', \App\Http\Controllers\Internal\PostController::class);
+    // Route::resource('activities', \App\Http\Controllers\Internal\ActivityController::class);
+    // Route::resource('meetings', \App\Http\Controllers\Internal\MeetingController::class)->except(['show']);
+    // Route::get('page-views', [\App\Http\Controllers\Internal\PageViewController::class, 'index'])->name('page-views.index');
+    // Route::get('field-changes', [\App\Http\Controllers\Internal\FieldChangeController::class, 'index'])->name('field-changes.index');
+});
+
+//  ADMIN ROUTES
+Route::get('/admin', [\App\Http\Controllers\Admin\AdminController::class, 'dashboard'])->name('admin.dashboard');
+Route::name('admin.')->prefix('admin')->group(function () {
+    Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
+    Route::get('users/{user}/roles', [\App\Http\Controllers\Admin\UserRoleController::class, 'index'])->name('user_roles.index');
+    Route::put('users/{user}/roles', [\App\Http\Controllers\Admin\UserRoleController::class, 'update'])->name('user_roles.update');
+
+    Route::resource('roles', \App\Http\Controllers\Admin\RoleController::class);
+    Route::get('roles/{role}/rights', [\App\Http\Controllers\Admin\RoleRightController::class, 'index'])->name('role_rights.index');
+    Route::post('roles/{role}/rights', [\App\Http\Controllers\Admin\RoleRightController::class, 'store'])->name('role_rights.store');
+    Route::put('roles/{role}/rights', [\App\Http\Controllers\Admin\RoleRightController::class, 'update'])->name('role_rights.update');
+
+});
+
+
+
 require __DIR__.'/auth.php';
 
-Route::get('/{path?}', [PageController::class, 'show'])
-    ->where('path', '.*')
-    ->name('page.show');
+// Route::get('/{path?}', [PageController::class, 'show'])
+//     ->where('path', '.*')
+//     ->name('page.show');
 
