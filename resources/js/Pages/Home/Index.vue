@@ -1,14 +1,15 @@
 <script setup>
 import { Head, usePage } from "@inertiajs/vue3";
+import FacebookFeed from "@/Components/FacebookFeed.vue";
 import Hero from "@/Pages/Home/Partials/Hero.vue";
 import Stats from "@/Pages/Home/Partials/Stats.vue";
+import Testimonials from "@/Pages/Home/Partials/Testimonials.vue";
 import About from "@/Pages/Home/Partials/About.vue";
 import Services from "@/Pages/Home/Partials/Services.vue";
 import Events from "@/Pages/Home/Partials/Events.vue";
 import News from "@/Pages/Home/Partials/News.vue";
 import Volunteer from "@/Pages/Home/Partials/Volunteer.vue";
 import Contact from "@/Pages/Home/Partials/Contact.vue";
-import InstagramFeed from "@/Components/InstagramFeed.vue";
 import Header from "@/Layouts/Partials/Header.vue";
 import Footer from "@/Layouts/Partials/Footer.vue";
 
@@ -16,6 +17,11 @@ const page = usePage();
 
 defineProps({
   site: { type: Object },
+  stats: { type: Array, default: () => [] },
+  services: { type: Array, default: () => [] },
+  events: { type: Array, default: () => [] },
+  testimonials: { type: Array, default: () => [] },
+  featuredTestimonial: { type: Object, default: () => null },
 });
 
 const navLinks = page.props.site.nav_links;
@@ -27,34 +33,37 @@ const navLinks = page.props.site.nav_links;
   <div class="font-sans antialiased text-warm-800 bg-white">
     <Header :navLinks="navLinks" />
 
-    <!-- HERO -->
+    <!-- ── HERO ── -->
     <Hero :site="site" />
 
-    <!-- STATS -->
-    <Stats />
+    <!-- ── STATS ── -->
+    <Stats :stats="stats" />
 
-    <!-- ABOUT -->
-    <About />
+    <!-- ── ABOUT ── -->
+    <About :testimonial="featuredTestimonial" />
 
-    <!-- OUR SWEETS -->
-    <Services />
+    <!-- ── SERVICES ── -->
+    <Services :services="services" />
 
-    <!-- EVENTS & HIRE -->
-    <Events />
+    <!-- ── EVENTS ── -->
+    <Events :events="events" />
 
-    <!-- NEWS -->
+    <!-- ── NEWS ── -->
     <News />
 
-    <!-- INSTAGRAM FEED -->
-    <InstagramFeed />
+    <!-- ── TESTIMONIALS ── -->
+    <Testimonials :testimonials="testimonials" />
 
-    <!-- WEDDINGS & EVENTS CTA -->
+    <!-- ── FACEBOOK FEED ── -->
+    <FacebookFeed />
+
+    <!-- ── VOLUNTEER CTA ── -->
     <Volunteer />
 
-    <!-- CONTACT -->
+    <!-- ── CONTACT ── -->
     <Contact :site="site" />
 
-    <!-- FOOTER -->
+    <!-- ── FOOTER ── -->
     <Footer :navLinks="navLinks" />
   </div>
 </template>

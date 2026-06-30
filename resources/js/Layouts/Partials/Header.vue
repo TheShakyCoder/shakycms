@@ -37,8 +37,8 @@ onUnmounted(() => {
                     <a href="/" class="flex items-center gap-3 shrink-0">
                         <img src="/media/logo.png" alt="Acme Sweets Logo" class="h-14 w-auto" />
                         <div class="hidden md:block">
-                            <p class="text-lg font-semibold text-brand-600 leading-tight font-display">Acme</p>
-                            <p class="text-md text-candy-purple tracking-wider leading-tight font-display">Sweets</p>
+                            <p class="text-lg font-semibold text-brand-600 leading-tight font-display">Woodvale & Ainsdale</p>
+                            <p class="text-md text-candy-purple tracking-wider leading-tight font-display">Community Association</p>
                         </div>
                     </a>
 

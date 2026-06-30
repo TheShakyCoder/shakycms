@@ -51,7 +51,9 @@ const page = usePage();
                                 {{ page.props.site.email }}
                             </a>
                         </li>
-                        <li class="text-white/40 text-xs pt-1" v-html="page.props.site.opening_times"></li>
+                    </ul>
+                    <ul>
+                        <li class="text-white/40 text-xs pt-1" v-for="time in page.props.site.opening_times" :key="time" v-html="time"></li>
                     </ul>
                     <p class="text-white/70 text-xs font-semibold uppercase tracking-widest mb-3">Follow Us</p>
                     <div class="flex gap-3">

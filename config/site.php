@@ -1,12 +1,15 @@
 <?php
 
 return [
-    'fullname' => env('SITE_FULLNAME', 'Acme Sweets'),
-    'address' => env('SITE_ADDRESS', 'Liverpool Road, Penwortham, Preston, PR1 0TB'),
-    'telephone' => env('SITE_TELEPHONE', '01772 378 415'),
-    'email' => env('SITE_EMAIL', 'master@example.com'),
-    'established' => env('SITE_ESTABLISHED', '2022'),
-    'opening_times' => "Monday - Saturday: 11:00am - 5:00pm<br>Sunday: Closed",
+    'fullname' => env('SITE_FULLNAME', 'Woodvale & Ainsdale Community Association'),
+    'address' => env('SITE_ADDRESS', 'Meadow Lane, Woodvale, Merseyside. PR8 3RS'),
+    'telephone' => env('SITE_TELEPHONE', '01704 573084'),
+    'email' => env('SITE_EMAIL', 'manager@woodvalecentre.co.uk'),
+    'established' => env('SITE_ESTABLISHED', '1991'),
+    'opening_times' => [
+        "Monday - Friday: 9:00am - 6:00pm",
+        "Saturday: 10:00am - 4:00pm",
+    ],
 
     'social' => [
         'instagram' => 'https://www.instagram.com',
