@@ -15,6 +15,7 @@ const showingNavigationDropdown = ref(false);
 
 const navLinks = [
     { label: "Dashboard", href: "internal.dashboard", permission: null },
+    { label: "Stats", href: "internal.stats.index", permission: null, module: "stats" },
     { label: "Admin", href: "admin.dashboard", permission: "admin.dashboard" },
     // {
     //     label: "Posts",
@@ -59,14 +60,14 @@ onMounted(() => {
                         >
                             <img
                                 src="/media/logo.png"
-                                alt="Acme Sweets"
+                                :alt="page.props.site.fullname + ' Logo'"
                                 class="h-10 w-auto"
                             />
                             <div class="hidden sm:block">
                                 <p
                                     class="text-sm font-semibold text-warm-800 leading-tight font-display"
                                 >
-                                    WACA
+                                    {{ page.props.site.fullname }}
                                 </p>
                                 <p class="text-xs text-warm-400 leading-tight">
                                     {{ title }}
@@ -79,10 +80,11 @@ onMounted(() => {
                             <template v-for="link in navLinks" :key="link.href">
                                 <DesktopLink
                                     v-if="
-                                        (link.permission &&
+                                        ((link.permission &&
                                         page.props.can.includes(link.permission)) ||
                                         !link.permission ||
-                                        page.props.auth.user.is_admin
+                                        page.props.auth.user.is_admin) &&
+                                        (!link.module || page.props.modules?.[link.module])
                                     "
                                     :href="link.href"
                                     :title="link.label"
@@ -255,6 +257,13 @@ onMounted(() => {
                         :active="route().current('internal.dashboard')"
                     >
                         Dashboard
+                    </ResponsiveNavLink>
+                    <ResponsiveNavLink
+                        v-if="$page.props.modules?.stats"
+                        :href="route('internal.stats.index')"
+                        :active="$page.url.startsWith('/internal/stats')"
+                    >
+                        Stats
                     </ResponsiveNavLink>
                     <ResponsiveNavLink
                         href="/internal/media"
