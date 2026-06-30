@@ -10,9 +10,9 @@ use Illuminate\Console\Command;
  * with its default state. Safe to run on every deploy (idempotent) — wired
  * into the Docker entrypoint after migrations.
  */
-class ModuleSync extends Command
+class ModulesSync extends Command
 {
-    protected $signature = 'module:sync';
+    protected $signature = 'modules:sync';
 
     protected $description = 'Register any new modules in the database (idempotent)';
 
