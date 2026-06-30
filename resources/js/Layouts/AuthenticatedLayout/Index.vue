@@ -66,7 +66,7 @@ onMounted(() => {
                                 <p
                                     class="text-sm font-semibold text-warm-800 leading-tight font-display"
                                 >
-                                    Acme Sweets
+                                    WACA
                                 </p>
                                 <p class="text-xs text-warm-400 leading-tight">
                                     {{ title }}
@@ -114,7 +114,7 @@ onMounted(() => {
                             View site
                         </Link>
 
-                        <Dropdown align="right" width="48">
+                        <Dropdown align="right" width="48" content-classes="py-1 bg-white">
                             <template #trigger>
                                 <button
                                     type="button"
