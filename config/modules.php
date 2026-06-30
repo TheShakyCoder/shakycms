@@ -15,6 +15,7 @@ return [
 
     'registry' => [
         App\Modules\Auth\AuthModule::class,
+        App\Modules\Stats\StatsModule::class,
     ],
 
 ];

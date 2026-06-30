@@ -10,10 +10,12 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('pages', function (Blueprint $table) {
+        Schema::create('stats', function (Blueprint $table) {
             $table->id();
-            $table->string('slug')->unique();
-            $table->string('title')->nullable();
+            $table->string('value');   // big display value, e.g. "90+", "5⭐"
+            $table->string('label');   // description, e.g. "Pick 'n' mix varieties"
+            $table->string('icon')->nullable();
+            $table->unsignedInteger('order')->default(0);
             $table->timestamps();
         });
     }
@@ -23,6 +25,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('pages');
+        Schema::dropIfExists('stats');
     }
 };
