@@ -70,15 +70,15 @@ onUnmounted(() => {
 
                     <!-- CTA buttons -->
                     <div class="hidden lg:flex items-center gap-3">
-                        <Link v-if="!$page.props.auth?.user" :href="route('login')"
+                        <Link v-if="$page.props.modules?.auth && !$page.props.auth?.user" :href="route('login')"
                             class="px-2 py-2 text-sm font-medium text-brand-600 hover:text-brand-700 transition-colors">
                         Login
                         </Link>
-                        <Link v-if="!$page.props.auth?.user" :href="route('register')"
+                        <Link v-if="$page.props.modules?.auth && !$page.props.auth?.user" :href="route('register')"
                             class="px-2 py-2 text-sm font-medium text-brand-600 hover:text-brand-700 transition-colors">
                         Register
                         </Link>
-                        <Link v-if="$page.props.auth?.user" :href="route('internal.dashboard')"
+                        <Link v-if="$page.props.modules?.auth && $page.props.auth?.user" :href="route('internal.dashboard')"
                             class="px-2 py-2 text-sm font-medium text-brand-600 hover:text-brand-700 transition-colors">
                         Dashboard
                         </Link>
@@ -128,7 +128,7 @@ onUnmounted(() => {
                     </div>
                 </template>
                 <div class="pt-2 border-t border-warm-100 flex flex-col gap-2">
-                    <Link v-if="!$page.props.auth?.user" :href="route('login')"
+                    <Link v-if="$page.props.modules?.auth && !$page.props.auth?.user" :href="route('login')"
                         class="block px-4 py-2.5 text-sm font-medium text-brand-600 rounded-lg hover:bg-brand-50 transition-colors">
                     Login
                     </Link>

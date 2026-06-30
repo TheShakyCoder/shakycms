@@ -34,6 +34,7 @@ const quickLinks = [
     { label: 'Users',       icon: '👥',  href: '/admin/users',  colour: 'bg-brand-600 hover:bg-brand-700 text-white' },
     { label: 'All Posts',   icon: '📰',  href: '/admin/posts',  colour: 'bg-sky-500 hover:bg-sky-600 text-white' },
     { label: 'Roles',       icon: '🔐',  href: '/admin/roles',  colour: 'bg-purple-600 hover:bg-purple-700 text-white' },
+    { label: 'Modules',     icon: '🧩',  href: '/admin/modules', colour: 'bg-emerald-600 hover:bg-emerald-700 text-white' },
     { label: 'Public Site', icon: '🌐',  href: '/',             colour: 'bg-warm-700 hover:bg-warm-800 text-white' },
 ];
 

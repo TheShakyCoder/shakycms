@@ -6,6 +6,9 @@ cd /var/www/html
 echo "==> [startup] Running migrations"
 php artisan migrate --force --no-interaction
 
+echo "==> [startup] Syncing modules"
+php artisan modules:sync
+
 echo "==> [startup] Creating storage symlink"
 php artisan storage:link 2>/dev/null || true
 
