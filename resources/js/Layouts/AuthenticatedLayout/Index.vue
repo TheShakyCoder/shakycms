@@ -59,14 +59,14 @@ onMounted(() => {
                         >
                             <img
                                 src="/media/logo.png"
-                                alt="Acme Sweets"
+                                :alt="page.props.site.fullname + ' Logo'"
                                 class="h-10 w-auto"
                             />
                             <div class="hidden sm:block">
                                 <p
                                     class="text-sm font-semibold text-warm-800 leading-tight font-display"
                                 >
-                                    Acme Sweets
+                                    {{ page.props.site.fullname }}
                                 </p>
                                 <p class="text-xs text-warm-400 leading-tight">
                                     {{ title }}

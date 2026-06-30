@@ -23,8 +23,7 @@ const page = usePage();
                         </div>
                     </div>
                     <p class="text-white/60 text-sm leading-relaxed max-w-xs">
-                        The biggest self-serve pick 'n' mix in the North West! American candy, retro sweets, and
-                        everything in between at our shop.
+                        {{ page.props.site.description }}
                     </p>
                 </div>
 
@@ -51,9 +50,11 @@ const page = usePage();
                                 {{ page.props.site.email }}
                             </a>
                         </li>
-                        <li class="text-white/40 text-xs pt-1" v-html="page.props.site.opening_times"></li>
                     </ul>
-                    <p class="text-white/70 text-xs font-semibold uppercase tracking-widest mb-3">Follow Us</p>
+                    <ul class="space-y-0">
+                        <li class="text-white/40 text-xs pt-1" v-for="time in page.props.site.opening_times" :key="time" v-html="time"></li>
+                    </ul>
+                    <p class="text-white/70 text-xs font-semibold uppercase tracking-widest my-3">Follow Us</p>
                     <div class="flex gap-3">
                         <a :href="page.props.site.social?.instagram" target="_blank" rel="noopener"
                             class="w-9 h-9 bg-white/10 rounded-lg flex items-center justify-center hover:bg-brand-500/50 transition-colors"
