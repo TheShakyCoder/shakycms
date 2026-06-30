@@ -72,6 +72,9 @@ class HandleInertiaRequests extends Middleware
 
             'can' => $can ?? [],
 
+            // Active feature modules, e.g. ['auth' => true]. Used to gate UI.
+            'modules' => fn () => app('modules')->sharedMap(),
+
             // Shared so Ziggy's route() works during SSR (no global Ziggy on the server).
             'ziggy' => fn () => [
                 ...(new Ziggy)->toArray(),

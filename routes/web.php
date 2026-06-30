@@ -16,7 +16,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::name('internal.')->prefix('internal')->middleware(['auth', 'verified'])->group(function () {
+Route::name('internal.')->prefix('internal')->middleware(['auth', 'verified', 'module:auth'])->group(function () {
     Route::get('dashboard', function () {
         return Inertia::render('Internal/Dashboard');
     })->name('dashboard');
@@ -38,6 +38,10 @@ Route::name('internal.')->prefix('internal')->middleware(['auth', 'verified'])->
 //  ADMIN ROUTES
 Route::middleware(['auth', 'verified', 'admin'])->name('admin.')->prefix('admin')->group(function () {
     Route::get('/', [\App\Http\Controllers\Admin\AdminController::class, 'dashboard'])->name('dashboard');
+
+    Route::get('modules', [\App\Http\Controllers\Admin\ModuleController::class, 'index'])->name('modules.index');
+    Route::put('modules/{key}', [\App\Http\Controllers\Admin\ModuleController::class, 'update'])->name('modules.update');
+
     Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
     Route::get('users/{user}/roles', [\App\Http\Controllers\Admin\UserRoleController::class, 'index'])->name('user_roles.index');
     Route::put('users/{user}/roles', [\App\Http\Controllers\Admin\UserRoleController::class, 'update'])->name('user_roles.update');
