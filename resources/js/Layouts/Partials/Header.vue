@@ -78,7 +78,7 @@ onUnmounted(() => {
                             class="px-2 py-2 text-sm font-medium text-brand-600 hover:text-brand-700 transition-colors">
                         Register
                         </Link>
-                        <Link v-if="$page.props.auth?.user" :href="route('dashboard')"
+                        <Link v-if="$page.props.auth?.user" :href="route('internal.dashboard')"
                             class="px-2 py-2 text-sm font-medium text-brand-600 hover:text-brand-700 transition-colors">
                         Dashboard
                         </Link>
