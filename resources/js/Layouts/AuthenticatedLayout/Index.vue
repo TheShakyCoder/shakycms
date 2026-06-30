@@ -64,7 +64,7 @@ onMounted(() => {
                             />
                             <div class="hidden sm:block">
                                 <p
-                                    class="text-sm font-semibold text-brand-600 leading-tight font-display"
+                                    class="text-sm font-semibold text-warm-800 leading-tight font-display"
                                 >
                                     Acme Sweets
                                 </p>
@@ -96,7 +96,7 @@ onMounted(() => {
                         <!-- View site -->
                         <Link
                             href="/"
-                            class="text-xs text-warm-500 hover:text-brand-600 transition-colors flex items-center gap-1"
+                            class="text-xs text-warm-500 hover:text-warm-900 transition-colors flex items-center gap-1"
                         >
                             <svg
                                 class="w-3.5 h-3.5"
@@ -121,7 +121,7 @@ onMounted(() => {
                                     class="flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-warm-100 transition-colors text-sm font-medium text-warm-700"
                                 >
                                     <div
-                                        class="w-8 h-8 bg-brand-600 rounded-full flex items-center justify-center text-white text-xs font-bold"
+                                        class="w-8 h-8 bg-warm-800 rounded-full flex items-center justify-center text-white text-xs font-bold"
                                     >
                                         {{
                                             $page.props.auth.user.name
@@ -272,7 +272,7 @@ onMounted(() => {
                 <div class="border-t border-warm-100 px-4 py-3">
                     <div class="flex items-center gap-3 mb-3">
                         <div
-                            class="w-9 h-9 bg-brand-600 rounded-full flex items-center justify-center text-white text-sm font-bold"
+                            class="w-9 h-9 bg-warm-800 rounded-full flex items-center justify-center text-white text-sm font-bold"
                         >
                             {{
                                 $page.props.auth.user.name

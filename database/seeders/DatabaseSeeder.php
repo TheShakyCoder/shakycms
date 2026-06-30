@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
         ]);
         $user = User::create([
             'name' => 'Editor',
-            'email' => 'manager@woodvalecentre.co.uk',
+            'email' => 'manager@stupidly.uk',
             'email_verified_at' => now(),
             'password' => Hash::make(env('EDITOR_PASSWORD', 'password')),
         ]);

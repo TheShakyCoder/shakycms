@@ -31,13 +31,13 @@ Route::name('internal.')->prefix('internal')->middleware(['auth', 'verified'])->
     // Route::resource('posts', \App\Http\Controllers\Internal\PostController::class);
     // Route::resource('activities', \App\Http\Controllers\Internal\ActivityController::class);
     // Route::resource('meetings', \App\Http\Controllers\Internal\MeetingController::class)->except(['show']);
-    // Route::get('page-views', [\App\Http\Controllers\Internal\PageViewController::class, 'index'])->name('page-views.index');
+    Route::get('page-views', [\App\Http\Controllers\Internal\PageViewController::class, 'index'])->name('page-views.index');
     // Route::get('field-changes', [\App\Http\Controllers\Internal\FieldChangeController::class, 'index'])->name('field-changes.index');
 });
 
 //  ADMIN ROUTES
-Route::get('/admin', [\App\Http\Controllers\Admin\AdminController::class, 'dashboard'])->name('admin.dashboard');
-Route::name('admin.')->prefix('admin')->group(function () {
+Route::middleware(['auth', 'verified', 'admin'])->name('admin.')->prefix('admin')->group(function () {
+    Route::get('/', [\App\Http\Controllers\Admin\AdminController::class, 'dashboard'])->name('dashboard');
     Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
     Route::get('users/{user}/roles', [\App\Http\Controllers\Admin\UserRoleController::class, 'index'])->name('user_roles.index');
     Route::put('users/{user}/roles', [\App\Http\Controllers\Admin\UserRoleController::class, 'update'])->name('user_roles.update');
@@ -46,12 +46,12 @@ Route::name('admin.')->prefix('admin')->group(function () {
     Route::get('roles/{role}/rights', [\App\Http\Controllers\Admin\RoleRightController::class, 'index'])->name('role_rights.index');
     Route::post('roles/{role}/rights', [\App\Http\Controllers\Admin\RoleRightController::class, 'store'])->name('role_rights.store');
     Route::put('roles/{role}/rights', [\App\Http\Controllers\Admin\RoleRightController::class, 'update'])->name('role_rights.update');
-
 });
 
 
 
-require __DIR__.'/auth.php';
+
+require __DIR__ . '/auth.php';
 
 // Route::get('/{path?}', [PageController::class, 'show'])
 //     ->where('path', '.*')

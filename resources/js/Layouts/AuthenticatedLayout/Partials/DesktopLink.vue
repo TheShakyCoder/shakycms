@@ -13,7 +13,7 @@ defineProps({
         class="px-3 py-2 text-sm font-medium rounded-lg transition-colors"
         :class="
             route().current(href)
-                ? 'bg-brand-50 text-brand-700'
+                ? 'bg-warm-100 text-warm-900'
                 : 'text-warm-600 hover:bg-warm-100 hover:text-warm-900'
         "
     >
