@@ -1,12 +1,12 @@
 <script setup>
 import PrimaryLink from '@/Components/PrimaryLink.vue';
 import { Link, usePage } from '@inertiajs/vue3';
+import { computed } from 'vue';
 
 const page = usePage();
 
-defineProps({
-    testimonial: { type: Object, default: () => null },
-});
+// Set (with a featured testimonial) only when the Testimonials module is active.
+const featured = computed(() => page.props.featuredTestimonial);
 </script>
 
 <template>
@@ -39,20 +39,21 @@ defineProps({
                 </div>
 
                 <div class="grid grid-cols-2 gap-4">
-                    <div v-if="testimonial" class="bg-brand-600 rounded-2xl p-6 text-white col-span-2">
-                        <p class="text-2xl font-display font-bold mb-2">"{{ testimonial.title }}"</p>
-                        <p class="text-white/80 text-sm leading-relaxed">
-                            "{{ testimonial.comment }}"
-                        </p>
-                        <p class="text-white/60 text-xs mt-3 font-medium">— {{ testimonial.name }}</p>
-                    </div>
-                    <div v-else class="bg-brand-600 rounded-2xl p-6 text-white col-span-2">
-                        <p class="text-2xl font-display font-bold mb-2">"A true community gem"</p>
-                        <p class="text-white/80 text-sm leading-relaxed">
-                            "I've been coming to the centre for 15 years. It's changed my life — I made friends here,
-                            got help when I needed it, and now I volunteer every Thursday."
-                        </p>
-                        <p class="text-white/60 text-xs mt-3 font-medium">— Margaret T., Ainsdale resident</p>
+                    <div class="rounded-2xl p-6 text-white col-span-2 bg-gradient-to-br from-brand-500 to-brand-700">
+                        <template v-if="featured">
+                            <p class="text-2xl font-display font-bold mb-2">"{{ featured.headline }}"</p>
+                            <p class="text-white/80 text-sm leading-relaxed">"{{ featured.quote }}"</p>
+                            <p class="text-white/60 text-xs mt-3 font-medium">
+                                — {{ featured.author }}<span v-if="featured.role">, {{ featured.role }}</span>
+                            </p>
+                        </template>
+                        <template v-else>
+                            <p class="text-2xl font-display font-bold mb-2">"A true second home!"</p>
+                            <p class="text-white/80 text-sm leading-relaxed">
+                                "The centre has become a true second home for me. The staff are wonderful and there is always something going on for everyone."
+                            </p>
+                            <p class="text-white/60 text-xs mt-3 font-medium">— Happy customer via TikTok</p>
+                        </template>
                     </div>
                     <div class="bg-white rounded-2xl p-5 border border-warm-200 flex flex-col items-start gap-2">
                         <span class="text-3xl">🏅</span>
