@@ -28,8 +28,8 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <header>
-        <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm border-b border-warm-200">
+    <header class="sticky top-0 z-50">
+        <nav class="bg-white/70 backdrop-blur-lg shadow-sm border-b border-warm-200">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="flex h-20 items-center justify-between">
 

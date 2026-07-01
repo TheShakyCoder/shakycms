@@ -18,11 +18,6 @@ return [
 
     'nav_links' => [
         ['label' => 'Home', 'href' => '/'],
-        ['label' => 'Our Sweets', 'href' => '#sweets'],
-        ['label' => 'About', 'href' => '#about'],
-        ['label' => 'Events', 'href' => '#events'],
-        ['label' => 'News', 'href' => '/news-updates'],
-        ['label' => 'Contact', 'href' => '#contact'],
     ],
 
     'robots_allowed' => env('ROBOTS_ALLOWED', false),
