@@ -83,7 +83,7 @@ onUnmounted(() => {
                         Dashboard
                         </Link>
                         <Link href="#contact"
-                            class="px-5 py-2.5 text-white text-sm font-bold rounded-xl hover:opacity-90 transition-all shadow-md" style="background: linear-gradient(135deg, #ff1a75, #d946ef)">
+                            class="px-5 py-2.5 bg-accent-700 text-white text-sm font-bold rounded-xl hover:bg-brand-600 transition-colors shadow-md">
                             Visit Us
                         </Link>
                     </div>
