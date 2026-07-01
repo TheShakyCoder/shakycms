@@ -73,24 +73,6 @@ defineProps({
                             📍 Visit Us
                         </a>
                     </div>
-
-                    <!-- Social proof -->
-                    <div class="flex items-center gap-6 mt-12 pt-8 border-t border-white/15">
-                        <div>
-                            <p class="font-display text-2xl font-extrabold text-accent-300">90+</p>
-                            <p class="text-xs text-white/60 font-medium">Pick 'n' mix varieties</p>
-                        </div>
-                        <div class="w-px h-10 bg-white/20"></div>
-                        <div>
-                            <p class="font-display text-2xl font-extrabold text-accent-300">5 ⭐</p>
-                            <p class="text-xs text-white/60 font-medium">Google rating</p>
-                        </div>
-                        <div class="w-px h-10 bg-white/20"></div>
-                        <div>
-                            <p class="font-display text-2xl font-extrabold text-accent-300">1000s</p>
-                            <p class="text-xs text-white/60 font-medium">Happy customers</p>
-                        </div>
-                    </div>
                 </div>
 
                 <!-- ── Right: Candy visual cluster ── -->
