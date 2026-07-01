@@ -119,8 +119,9 @@ class ModuleManager
     }
 
     /**
-     * Ensure a DB row exists for each registered module, seeded with its
-     * default state. Returns the keys of newly-created rows.
+     * Ensure a DB row exists for each registered module. Modules are always
+     * installed inactive — an admin activates them explicitly. Returns the
+     * keys of newly-created rows.
      *
      * @return array<int, string>
      */
@@ -131,7 +132,7 @@ class ModuleManager
         foreach ($this->modules as $key => $module) {
             $row = ModuleState::query()->firstOrCreate(
                 ['key' => $key],
-                ['active' => $module->defaultActive()],
+                ['active' => false],
             );
 
             if ($row->wasRecentlyCreated) {
@@ -156,8 +157,9 @@ class ModuleManager
         $state = $this->stateFromDb();
 
         $map = [];
-        foreach ($this->modules as $key => $module) {
-            $map[$key] = $state[$key] ?? $module->defaultActive();
+        foreach (array_keys($this->modules) as $key) {
+            // Unknown to the DB (not yet synced) → inactive by default.
+            $map[$key] = $state[$key] ?? false;
         }
 
         return $map;

@@ -27,11 +27,6 @@ class StatsModule implements Module
         return 'Manage the statistics shown on the homepage.';
     }
 
-    public function defaultActive(): bool
-    {
-        return true;
-    }
-
     public function route(): ?string
     {
         return 'internal.stats.index';
