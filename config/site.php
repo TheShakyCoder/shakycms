@@ -16,9 +16,5 @@ return [
         'tiktok' => 'https://www.tiktok.com',
     ],
 
-    'nav_links' => [
-        ['label' => 'Home', 'href' => '/'],
-    ],
-
     'robots_allowed' => env('ROBOTS_ALLOWED', false),
 ];
