@@ -2,7 +2,7 @@
 
 namespace App\Modules\Stats;
 
-use App\Modules\Contracts\Module;
+use App\Contracts\Module;
 
 /**
  * Stats module.
@@ -30,5 +30,10 @@ class StatsModule implements Module
     public function defaultActive(): bool
     {
         return true;
+    }
+
+    public function route(): ?string
+    {
+        return 'internal.stats.index';
     }
 }

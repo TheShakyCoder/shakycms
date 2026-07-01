@@ -2,7 +2,7 @@
 
 namespace App\Modules\Auth;
 
-use App\Modules\Contracts\Module;
+use App\Contracts\Module;
 
 /**
  * Authentication module.
@@ -34,5 +34,11 @@ class AuthModule implements Module
     public function defaultActive(): bool
     {
         return true;
+    }
+
+    public function route(): ?string
+    {
+        // Auth has no single management page of its own.
+        return null;
     }
 }

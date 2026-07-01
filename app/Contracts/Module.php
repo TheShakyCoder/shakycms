@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Contracts;
+namespace App\Contracts;
 
 /**
  * A feature area that can be globally activated/deactivated by an admin.
@@ -23,4 +23,7 @@ interface Module
 
     /** Whether the module should be active the first time it is registered. */
     public function defaultActive(): bool;
+
+    /** Route name of the module's main page when active, or null if it has none. */
+    public function route(): ?string;
 }
