@@ -12,16 +12,8 @@ const palette = [
     { color: 'from-accent-400 to-accent-600', shadow: 'shadow-accent-400/20' },
 ];
 
-// Shown when no stats have been created yet.
-const fallback = [
-    { value: '90+', label: 'Pick \'n\' mix varieties' },
-    { value: '100s', label: 'Of American imports' },
-    { value: '1000s', label: 'Happy customers' },
-    { value: '5⭐', label: 'Rated on Google' },
-];
-
 const stats = computed(() => {
-    const source = page.props.stats?.length ? page.props.stats : fallback;
+    const source = page.props.stats?.length ? page.props.stats : [];
     return source.map((stat, i) => ({
         value: stat.value,
         label: stat.label,
