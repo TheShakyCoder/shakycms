@@ -2,6 +2,7 @@
 
 return [
     'fullname' => env('SITE_FULLNAME', 'Acme Master'),
+    'shortname' => env('SITE_SHORTNAME', 'Acme'),
     'address' => env('SITE_ADDRESS', 'Moorhey Drive, Penwortham, Preston, PR1 0SS'),
     'telephone' => env('SITE_TELEPHONE', '07515 382159'),
     'email' => env('SITE_EMAIL', 'support@example.com'),
