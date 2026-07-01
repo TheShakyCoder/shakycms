@@ -2,11 +2,14 @@
 
 // use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Stat;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', function () {
-    return Inertia::render('Home/Index');
+    return Inertia::render('Home/Index', [
+        'stats' => Stat::ordered()->get(['value', 'label', 'icon']),
+    ]);
 })->name('home');
 
 //  INTERNAL ROUTES
@@ -33,6 +36,14 @@ Route::name('internal.')->prefix('internal')->middleware(['auth', 'verified', 'm
     // Route::resource('meetings', \App\Http\Controllers\Internal\MeetingController::class)->except(['show']);
     Route::get('page-views', [\App\Http\Controllers\Internal\PageViewController::class, 'index'])->name('page-views.index');
     // Route::get('field-changes', [\App\Http\Controllers\Internal\FieldChangeController::class, 'index'])->name('field-changes.index');
+
+    // Module info page — viewable for inactive modules too (not module-gated).
+    Route::get('modules/{key}', [\App\Http\Controllers\Internal\ModuleController::class, 'show'])->name('modules.show');
+
+    // Stats management — gated by the Stats module.
+    Route::middleware('module:stats')->group(function () {
+        Route::resource('stats', \App\Http\Controllers\Internal\StatController::class)->except('show');
+    });
 });
 
 //  ADMIN ROUTES

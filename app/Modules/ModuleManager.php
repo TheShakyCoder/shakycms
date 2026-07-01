@@ -3,7 +3,7 @@
 namespace App\Modules;
 
 use App\Models\Module as ModuleState;
-use App\Modules\Contracts\Module;
+use App\Contracts\Module;
 use Illuminate\Support\Facades\Cache;
 
 /**
@@ -72,7 +72,39 @@ class ModuleManager
             'name' => $m->name(),
             'description' => $m->description(),
             'active' => $map[$m->key()] ?? false,
+            'route' => $m->route(),
         ], $this->modules));
+    }
+
+    /** Lightweight list for the nav menu: every module, active or not. */
+    public function navList(): array
+    {
+        $map = $this->activeMap();
+
+        return array_values(array_map(fn (Module $m) => [
+            'key' => $m->key(),
+            'name' => $m->name(),
+            'active' => $map[$m->key()] ?? false,
+            'route' => $m->route(),
+        ], $this->modules));
+    }
+
+    /** Full info for a single module (for the info page), or null if unknown. */
+    public function info(string $key): ?array
+    {
+        if (! $this->has($key)) {
+            return null;
+        }
+
+        $module = $this->modules[$key];
+
+        return [
+            'key' => $module->key(),
+            'name' => $module->name(),
+            'description' => $module->description(),
+            'active' => $this->isActive($key),
+            'route' => $module->route(),
+        ];
     }
 
     public function setActive(string $key, bool $active): void

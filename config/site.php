@@ -1,13 +1,14 @@
 <?php
 
 return [
-    'fullname' => env('SITE_FULLNAME', 'Acme Sweets'),
-    'address' => env('SITE_ADDRESS', 'Liverpool Road, Penwortham, Preston, PR1 0TB'),
-    'telephone' => env('SITE_TELEPHONE', '01772 378 415'),
-    'email' => env('SITE_EMAIL', 'master@example.com'),
-    'established' => env('SITE_ESTABLISHED', '2022'),
-    'opening_times' => "Monday - Saturday: 11:00am - 5:00pm<br>Sunday: Closed",
-
+    'fullname' => env('SITE_FULLNAME', 'Acme Master'),
+    'address' => env('SITE_ADDRESS', 'Moorhey Drive, Penwortham, Preston, PR1 0SS'),
+    'telephone' => env('SITE_TELEPHONE', '07515 382159'),
+    'email' => env('SITE_EMAIL', 'support@example.com'),
+    'established' => env('SITE_ESTABLISHED', '2011'),
+    'opening_times' => ["Monday - Friday: 10:00am - 5:00pm", "Saturday - Sunday: Closed"],
+    'description' => env('SITE_DESCRIPTION', 'The biggest self-serve pick \'n\' mix in the North West! American candy, retro sweets, and everything in between at our shop.'),
+    
     'social' => [
         'instagram' => 'https://www.instagram.com',
         'facebook' => 'https://www.facebook.com',

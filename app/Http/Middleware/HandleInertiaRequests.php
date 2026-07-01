@@ -67,6 +67,7 @@ class HandleInertiaRequests extends Middleware
                 'opening_times' => config('site.opening_times'),
                 'established' => config('site.established'),
                 'social' => config('site.social'),
+                'description' => config('site.description'),
                 'nav_links' => $navLinks,
             ],
 
@@ -74,6 +75,9 @@ class HandleInertiaRequests extends Middleware
 
             // Active feature modules, e.g. ['auth' => true]. Used to gate UI.
             'modules' => fn () => app('modules')->sharedMap(),
+
+            // Every module (active or not) for the "Modules" nav menu.
+            'moduleList' => fn () => app('modules')->navList(),
 
             // Shared so Ziggy's route() works during SSR (no global Ziggy on the server).
             'ziggy' => fn () => [

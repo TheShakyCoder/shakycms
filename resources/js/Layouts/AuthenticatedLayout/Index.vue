@@ -59,14 +59,14 @@ onMounted(() => {
                         >
                             <img
                                 src="/media/logo.png"
-                                alt="Acme Sweets"
+                                :alt="page.props.site.fullname + ' Logo'"
                                 class="h-10 w-auto"
                             />
                             <div class="hidden sm:block">
                                 <p
                                     class="text-sm font-semibold text-warm-800 leading-tight font-display"
                                 >
-                                    Acme Sweets
+                                    {{ page.props.site.fullname }}
                                 </p>
                                 <p class="text-xs text-warm-400 leading-tight">
                                     {{ title }}
@@ -79,15 +79,40 @@ onMounted(() => {
                             <template v-for="link in navLinks" :key="link.href">
                                 <DesktopLink
                                     v-if="
-                                        (link.permission &&
+                                        ((link.permission &&
                                         page.props.can.includes(link.permission)) ||
                                         !link.permission ||
-                                        page.props.auth.user.is_admin
+                                        page.props.auth.user.is_admin) &&
+                                        (!link.module || page.props.modules?.[link.module])
                                     "
                                     :href="link.href"
                                     :title="link.label"
                                 ></DesktopLink>
                             </template>
+
+                            <!-- Modules menu -->
+                            <Dropdown v-if="page.props.moduleList?.length" align="left" width="48" content-classes="py-1 bg-white">
+                                <template #trigger>
+                                    <button type="button"
+                                        class="px-3 py-2 text-sm font-medium rounded-lg text-warm-600 hover:bg-warm-100 hover:text-warm-900 transition-colors flex items-center gap-1">
+                                        Modules
+                                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                </template>
+                                <template #content>
+                                    <DropdownLink v-for="m in page.props.moduleList" :key="m.key"
+                                        :href="m.active && m.route ? route(m.route) : route('internal.modules.show', m.key)"
+                                        class="flex items-center justify-between gap-3 text-sm !text-warm-700">
+                                        {{ m.name }}
+                                        <span v-if="!m.active"
+                                            class="text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-warm-100 text-warm-400">
+                                            off
+                                        </span>
+                                    </DropdownLink>
+                                </template>
+                            </Dropdown>
                         </div>
                     </div>
 
@@ -160,7 +185,7 @@ onMounted(() => {
                                 </div>
                                 <DropdownLink
                                     :href="route('profile.edit')"
-                                    class="flex items-center gap-2 text-sm text-warm-700"
+                                    class="flex items-center gap-2 text-sm !text-warm-700"
                                 >
                                     <svg
                                         class="w-4 h-4"
@@ -181,7 +206,7 @@ onMounted(() => {
                                     :href="route('logout')"
                                     method="post"
                                     as="button"
-                                    class="flex items-center gap-2 text-sm text-rose-600 w-full"
+                                    class="flex items-center gap-2 text-sm !text-rose-600 w-full"
                                 >
                                     <svg
                                         class="w-4 h-4"
@@ -256,6 +281,19 @@ onMounted(() => {
                     >
                         Dashboard
                     </ResponsiveNavLink>
+                    <template v-if="$page.props.moduleList?.length">
+                        <p class="px-4 pt-3 pb-1 text-[11px] font-semibold uppercase tracking-wide text-warm-400">
+                            Modules
+                        </p>
+                        <ResponsiveNavLink
+                            v-for="m in $page.props.moduleList"
+                            :key="m.key"
+                            :href="m.active && m.route ? route(m.route) : route('internal.modules.show', m.key)"
+                        >
+                            {{ m.name }}
+                            <span v-if="!m.active" class="text-xs text-warm-400">(off)</span>
+                        </ResponsiveNavLink>
+                    </template>
                     <ResponsiveNavLink
                         href="/internal/media"
                         :active="$page.url.startsWith('/internal/media')"
