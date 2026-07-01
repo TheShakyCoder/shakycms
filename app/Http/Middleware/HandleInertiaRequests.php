@@ -76,6 +76,9 @@ class HandleInertiaRequests extends Middleware
             // Active feature modules, e.g. ['auth' => true]. Used to gate UI.
             'modules' => fn () => app('modules')->sharedMap(),
 
+            // Every module (active or not) for the "Modules" nav menu.
+            'moduleList' => fn () => app('modules')->navList(),
+
             // Shared so Ziggy's route() works during SSR (no global Ziggy on the server).
             'ziggy' => fn () => [
                 ...(new Ziggy)->toArray(),
