@@ -3,12 +3,18 @@
 // use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Stat;
+use App\Models\Testimonial;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', function () {
     return Inertia::render('Home/Index', [
         'stats' => Stat::ordered()->get(['value', 'label', 'icon']),
+        // First featured testimonial, only when the Testimonials module is on.
+        // Null → the homepage keeps its hard-coded testimonial.
+        'featuredTestimonial' => app('modules')->isActive('testimonials')
+            ? Testimonial::where('featured', true)->ordered()->first(['author', 'role', 'headline', 'quote'])
+            : null,
     ]);
 })->name('home');
 
@@ -43,6 +49,11 @@ Route::name('internal.')->prefix('internal')->middleware(['auth', 'verified', 'm
     // Stats management — gated by the Stats module.
     Route::middleware('module:stats')->group(function () {
         Route::resource('stats', \App\Http\Controllers\Internal\StatController::class)->except('show');
+    });
+
+    // Testimonials management — gated by the Testimonials module.
+    Route::middleware('module:testimonials')->group(function () {
+        Route::resource('testimonials', \App\Http\Controllers\Internal\TestimonialController::class)->except('show');
     });
 });
 
