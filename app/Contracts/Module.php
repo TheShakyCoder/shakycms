@@ -21,9 +21,6 @@ interface Module
     /** Short description of what the module enables. */
     public function description(): string;
 
-    /** Whether the module should be active the first time it is registered. */
-    public function defaultActive(): bool;
-
     /** Route name of the module's main page when active, or null if it has none. */
     public function route(): ?string;
 }
