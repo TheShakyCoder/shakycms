@@ -26,21 +26,5 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make(env('ADMIN_PASSWORD')),
             'is_admin' => true
         ]);
-        $user = User::create([
-            'name' => 'Editor',
-            'email' => 'manager@stupidly.uk',
-            'email_verified_at' => now(),
-            'password' => Hash::make(env('EDITOR_PASSWORD')),
-        ]);
-
-        $editorRole = Role::create([
-            'name' => 'Editor',
-            'slug' => 'editor',
-        ]);
-
-        Privilege::create([
-            'role_id' => $editorRole->id,
-            'user_id' => $user->id,
-        ]);
     }
 }
