@@ -23,7 +23,6 @@ defineProps({
                 class="w-full h-full object-contain opacity-20 md:opacity-30" />
         </div>
 
-<<<<<<< HEAD
         <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 lg:py-36">
             <div class="max-w-3xl">
                 <span
@@ -41,87 +40,15 @@ defineProps({
                     running events, services, and support for everyone.
                 </p>
                 <div class="flex flex-wrap gap-4">
-                    <a href="#events"
+                    <!-- <a href="#events"
                         class="inline-flex items-center gap-2 px-7 py-3.5 bg-white text-brand-700 font-semibold rounded-xl hover:bg-brand-50 transition-colors shadow-lg text-sm">
                         Upcoming Events
                         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M17 8l4 4m0 0l-4 4m4-4H3" />
                         </svg>
-                    </a>
+                    </a> -->
                     <PrimaryLink href="/contact">Get In Touch</PrimaryLink>
-=======
-        <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-28 w-full">
-            <div class="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
-
-                <!-- ── Left: Copy ── -->
-                <div class="text-white">
-                    <!-- Pill badge -->
-                    <span class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-5 py-2 rounded-full text-sm font-semibold text-white mb-8 border border-white/20 shadow-lg shadow-black/5">
-                        <span class="relative flex h-2.5 w-2.5">
-                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-300 opacity-75"></span>
-                            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-accent-300"></span>
-                        </span>
-                        Acme's Sweetest Shop
-                    </span>
-
-                    <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-[1.05] mb-8 tracking-tight">
-                        Life is
-                        <span class="relative inline-block">
-                            <span class="relative z-10">Sweet</span>
-                            <span class="absolute -bottom-1 left-0 right-0 h-4 bg-accent-300/40 rounded-full -skew-x-3 z-0"></span>
-                        </span>
-                        <br />at <span class="text-accent-300 drop-shadow-lg">Acme</span>
-                    </h1>
-
-                    <p class="text-lg sm:text-xl text-white/85 leading-relaxed mb-10 max-w-xl font-medium">
-                        The biggest self-serve pick 'n' mix in the North West — plus American candy,
-                        retro sweets, and olde world favourites all under one roof.
-                    </p>
-
-                    <div class="flex flex-wrap gap-4">
-                        <a href="#sweets"
-                            class="group inline-flex items-center gap-2 px-8 py-4 bg-white text-brand-600 font-bold rounded-2xl hover:bg-accent-300 hover:text-warm-900 transition-all duration-200 shadow-xl shadow-black/10 text-sm">
-                            Explore Our Sweets
-                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                    d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                            </svg>
-                        </a>
-                        <a href="#contact"
-                            class="inline-flex items-center gap-2 px-8 py-4 bg-white/10 backdrop-blur-md text-white font-bold rounded-2xl hover:bg-white/20 transition-all duration-200 border border-white/25 text-sm">
-                            📍 Visit Us
-                        </a>
-                    </div>
-                </div>
-
-                <!-- ── Right: Candy visual cluster ── -->
-                <div class="hidden lg:flex items-center justify-center relative">
-                    <!-- Glowing backdrop circle -->
-                    <div class="absolute w-[420px] h-[420px] rounded-full bg-white/10 blur-2xl animate-scale-pulse"></div>
-
-                    <!-- Central candy arrangement -->
-                    <div class="relative w-[450px] h-[450px]">
-                        <!-- Main centre lollipop -->
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <span class="text-[160px] drop-shadow-2xl animate-float filter">🍭</span>
-                        </div>
-
-                        <!-- Orbiting candy -->
-                        <span class="absolute top-[5%] left-[15%] text-7xl animate-float-delayed drop-shadow-lg">🍬</span>
-                        <span class="absolute top-[10%] right-[10%] text-6xl animate-float drop-shadow-lg">🍫</span>
-                        <span class="absolute bottom-[15%] left-[5%] text-6xl animate-float-slow drop-shadow-lg">🍡</span>
-                        <span class="absolute bottom-[8%] right-[12%] text-7xl animate-float-delayed drop-shadow-lg">🧁</span>
-                        <span class="absolute top-[45%] right-[0%] text-5xl animate-wiggle drop-shadow-lg">⭐</span>
-                        <span class="absolute top-[40%] left-[0%] text-5xl animate-float drop-shadow-lg">🌈</span>
-
-                        <!-- Colourful accent dots -->
-                        <div class="absolute top-[25%] right-[25%] w-5 h-5 rounded-full bg-accent-300 animate-scale-pulse shadow-lg shadow-accent-300/50"></div>
-                        <div class="absolute bottom-[30%] left-[20%] w-4 h-4 rounded-full bg-candy-blue animate-float shadow-lg shadow-candy-blue/50"></div>
-                        <div class="absolute top-[60%] right-[5%] w-3 h-3 rounded-full bg-candy-green animate-wiggle shadow-lg shadow-candy-green/50"></div>
-                        <div class="absolute top-[5%] left-[45%] w-4 h-4 rounded-full bg-candy-yellow animate-float-delayed shadow-lg shadow-candy-yellow/50"></div>
-                    </div>
->>>>>>> master
                 </div>
             </div>
         </div>
