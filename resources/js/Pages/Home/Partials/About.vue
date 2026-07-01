@@ -1,8 +1,12 @@
 <script setup>
 import PrimaryLink from '@/Components/PrimaryLink.vue';
 import { Link, usePage } from '@inertiajs/vue3';
+import { computed } from 'vue';
 
 const page = usePage();
+
+// Set (with a featured testimonial) only when the Testimonials module is active.
+const featured = computed(() => page.props.featuredTestimonial);
 </script>
 
 <template>
@@ -39,12 +43,21 @@ const page = usePage();
 
                 <div class="grid grid-cols-2 gap-4">
                     <div class="rounded-2xl p-6 text-white col-span-2" style="background: linear-gradient(135deg, #ff1a75 0%, #d946ef 50%, #8b5cf6 100%)">
-                        <p class="text-2xl font-display font-bold mb-2">"An amazing shop!"</p>
-                        <p class="text-white/80 text-sm leading-relaxed">
-                            "We got a giant bag of sweets, some choc nibbles and two bags of blue takis.
-                            The staff were so lovely — highly recommended! We'll definitely be back."
-                        </p>
-                        <p class="text-white/60 text-xs mt-3 font-medium">— Happy customer via TikTok</p>
+                        <template v-if="featured">
+                            <p class="text-2xl font-display font-bold mb-2">"{{ featured.headline }}"</p>
+                            <p class="text-white/80 text-sm leading-relaxed">"{{ featured.quote }}"</p>
+                            <p class="text-white/60 text-xs mt-3 font-medium">
+                                — {{ featured.author }}<span v-if="featured.role">, {{ featured.role }}</span>
+                            </p>
+                        </template>
+                        <template v-else>
+                            <p class="text-2xl font-display font-bold mb-2">"An amazing shop!"</p>
+                            <p class="text-white/80 text-sm leading-relaxed">
+                                "We got a giant bag of sweets, some choc nibbles and two bags of blue takis.
+                                The staff were so lovely — highly recommended! We'll definitely be back."
+                            </p>
+                            <p class="text-white/60 text-xs mt-3 font-medium">— Happy customer via TikTok</p>
+                        </template>
                     </div>
                     <div class="bg-white rounded-2xl p-5 border border-warm-200 flex flex-col items-start gap-2">
                         <span class="text-3xl">&#127853;</span>
