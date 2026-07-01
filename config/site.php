@@ -1,14 +1,14 @@
 <?php
 
 return [
-    'fullname' => env('SITE_FULLNAME', 'Acme Master'),
-    'shortname' => env('SITE_SHORTNAME', 'Acme'),
-    'address' => env('SITE_ADDRESS', 'Moorhey Drive, Penwortham, Preston, PR1 0SS'),
-    'telephone' => env('SITE_TELEPHONE', '07515 382159'),
-    'email' => env('SITE_EMAIL', 'support@example.com'),
-    'established' => env('SITE_ESTABLISHED', '2011'),
-    'opening_times' => env('SITE_OPENING_TIMES', ["Monday - Friday: 10:00am - 5:00pm", "Saturday - Sunday: Closed"]),
-    'description' => env('SITE_DESCRIPTION', 'Serving the Woodvale and Ainsdale communities with a range of activities and events.'),
+    'fullname' => env('SITE_FULLNAME', ''),
+    'shortname' => env('SITE_SHORTNAME', ''),
+    'address' => env('SITE_ADDRESS', ''),
+    'telephone' => env('SITE_TELEPHONE', ''),
+    'email' => env('SITE_EMAIL', ''),
+    'established' => env('SITE_ESTABLISHED', ''),
+    'opening_times' => explode(', ', env('SITE_OPENING_TIMES', '')),
+    'description' => env('SITE_DESCRIPTION', ''),
     
     'social' => [
         'instagram' => 'https://www.instagram.com',
